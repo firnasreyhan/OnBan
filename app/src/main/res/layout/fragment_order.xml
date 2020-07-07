@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    tools:context=".view.fragment.OrderFragment">
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/linearLayoutBengkelKosong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_round_error_outline"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum Ada Bengkel Yang Terdaftar"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@android:color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/linearLayoutOrderKosong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_round_error_outline"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum Ada Pesanan"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@android:color/black"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        android:id="@+id/recyclerViewOrder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>

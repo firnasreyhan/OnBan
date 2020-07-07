@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|top"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginRight="16dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_mechanic"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewNamaBengkel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Bengkel"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:id="@+id/textViewStatusTransaksi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Status"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/textViewRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Rating: 5.0"
+                    android:gravity="right"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/textViewJumlahTransaksi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Transaksi 100 Kali"
+                    android:gravity="right"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/black"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/buttonTulisReview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Tulis Ulasan"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:drawableLeft="@drawable/ic_baseline_edit_white"
+            android:backgroundTint="@color/colorPrimary"/>
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/buttonSelesaikanTransaksi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Selesaikan Transaksi"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

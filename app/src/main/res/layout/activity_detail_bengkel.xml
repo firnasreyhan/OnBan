@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.DetailBengkelActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Profil Bengkel"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:fontFamily="@font/montserrat_bold"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewBengkel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Pemilik Bengkel"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewNamaPemilikBengkel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Pemilik Bengkel"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Bengkel"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewNamaBengkel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Bengkel"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/textViewEmailBengkel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Telepon"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewNomorTeleponBengkel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Telepon"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jam Operasional"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewJamOperasional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jam Operasional"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/buttonPesanLayanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Pesan Layanan"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textAllCaps="false"
+            android:backgroundTint="@android:color/white"
+            android:drawableTint="@android:color/black"
+            android:drawableLeft="@drawable/ic_round_shopping_cart" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Ulasan Bengkel"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:fontFamily="@font/montserrat_bold"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewUlasan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

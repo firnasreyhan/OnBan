@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".view.activity.OrderActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Lokasi Anda Sekarang"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:fontFamily="@font/montserrat_light"/>
+
+            <TextView
+                android:id="@+id/textViewLokasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="-"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Tanggal Sekarang"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:fontFamily="@font/montserrat_light"/>
+
+            <TextView
+                android:id="@+id/textViewTanggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="-"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Rincian Pesanan"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:fontFamily="@font/montserrat_light"/>
+
+            <EditText
+                android:id="@+id/editTextRincian"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:gravity="left|top"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@android:color/black"
+                android:backgroundTint="@android:color/black"
+                android:hint="Rincian Pesanan"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/buttonPesanSekarang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pesan Sekarang"
+        android:fontFamily="@font/montserrat_semibold"
+        android:textAllCaps="false"
+        android:backgroundTint="@android:color/white"
+        android:drawableTint="@android:color/black"
+        android:drawableLeft="@drawable/ic_round_shopping_cart" />
+
+</LinearLayout>

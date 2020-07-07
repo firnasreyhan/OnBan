@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".view.activity.ReviewActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Rating"
+                android:fontFamily="@font/montserrat_light"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+            <RatingBar
+                android:id="@+id/ratingBarReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:theme="@style/RatingBar"
+                android:numStars="5"
+                android:rating="0"
+                android:stepSize="0.5"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Ulasan"
+                android:fontFamily="@font/montserrat_light"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+            <EditText
+                android:id="@+id/editTextReview"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@android:color/black"/>
+
+            <Button
+                android:id="@+id/buttonReview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Kirim Ulasan"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

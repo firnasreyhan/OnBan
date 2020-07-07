@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "966600330143",
+    "firebase_url": "https://go-bengkel-f030f.firebaseio.com",
+    "project_id": "go-bengkel-f030f",
+    "storage_bucket": "go-bengkel-f030f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966600330143:android:17837abb615f8005d4cbaa",
+        "android_client_info": {
+          "package_name": "com.andorid.go_bengkel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966600330143-5ao8m65g7raa6atr3lbo1e370usvrqq6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andorid.go_bengkel",
+            "certificate_hash": "6c13f68d06f9ea656e282421cbef6ae0e43764a1"
+          }
+        },
+        {
+          "client_id": "966600330143-p7f8sn3okdcm7hoa7nqcu4gnbah05e31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbQcbUzZH2QPBPdV6_MuN2Oui0n_hfCaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966600330143-p7f8sn3okdcm7hoa7nqcu4gnbah05e31.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

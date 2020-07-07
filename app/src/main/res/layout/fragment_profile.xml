@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewBengkel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Pemilik Bengkel"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewNamaPemilikBengkel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Pemilik Bengkel"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Bengkel"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewNamaBengkel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Bengkel"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewEmailBengkel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Telepon"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewNomorTeleponBengkel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Telepon"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jam Operasional"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewJamOperasional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jam Operasional"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewPelanggan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewNamaPelanggan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewEmailPelanggan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Telepon"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:id="@+id/textViewNomorTeleponPelanggan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Telepon"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/buttonPerbaruiProfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perbarui Profil"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textAllCaps="false"
+            android:drawableTint="@android:color/black"
+            android:drawableLeft="@drawable/ic_baseline_edit"
+            android:backgroundTint="@android:color/white"/>
+
+        <Button
+            android:id="@+id/buttonKeluar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Keluar"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textAllCaps="false"
+            android:backgroundTint="@android:color/white"
+            android:drawableTint="@android:color/black"
+            android:drawableLeft="@drawable/ic_baseline_exit_to_app" />
+
+    </LinearLayout>
+
+</ScrollView>

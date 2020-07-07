@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:padding="16dp"
+    tools:context=".view.activity.RegisterBengkelActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_mechanic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/app_name"
+            android:layout_marginBottom="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@android:color/white"
+                    android:theme="@style/FirebaseWhiteLoginTheme"
+                    android:hint="Nama Pemilik Bengkel">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditTextNamaPemilikBengkel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColor="@android:color/white"
+                        android:inputType="textPersonName"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@android:color/white"
+                    android:theme="@style/FirebaseWhiteLoginTheme"
+                    android:hint="Nama Bengkel">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditTextNamaBengkel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColor="@android:color/white"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@android:color/white"
+                    android:theme="@style/FirebaseWhiteLoginTheme"
+                    android:hint="Email">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditTextEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColor="@android:color/white"
+                        android:inputType="textEmailAddress" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@android:color/white"
+                    android:theme="@style/FirebaseWhiteLoginTheme"
+                    android:hint="Telepon">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditTextTelepon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColor="@android:color/white"
+                        android:inputType="phone"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/white"
+                        android:theme="@style/FirebaseWhiteLoginTheme"
+                        android:layout_weight="1"
+                        android:hint="Jam Buka">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextJamBuka"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:textColorHint="@android:color/white"
+                            android:textColor="@android:color/white"
+                            android:inputType="time"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/white"
+                        android:theme="@style/FirebaseWhiteLoginTheme"
+                        android:layout_weight="1"
+                        android:hint="Jam Tutup">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextJamTutup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:textColorHint="@android:color/white"
+                            android:textColor="@android:color/white"
+                            android:inputType="time"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@android:color/white"
+                    android:theme="@style/FirebaseWhiteLoginTheme"
+                    android:hint="Alamat">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditTextAlamat"
+                        android:layout_width="match_parent"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:layout_height="100dp"
+                        android:backgroundTint="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColor="@android:color/white"
+                        android:gravity="start"
+                        android:inputType="textMultiLine"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@android:color/white"
+                    android:theme="@style/FirebaseWhiteLoginTheme"
+                    app:passwordToggleEnabled="true"
+                    android:hint="Password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditTextPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColor="@android:color/white"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@android:color/white"
+                    android:theme="@style/FirebaseWhiteLoginTheme"
+                    app:passwordToggleEnabled="true"
+                    android:hint="Konfirmasi Password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditTextKonfirmasiPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColor="@android:color/white"
+                        android:inputType="textPassword"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/buttonDaftar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Daftar"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@android:color/white"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
