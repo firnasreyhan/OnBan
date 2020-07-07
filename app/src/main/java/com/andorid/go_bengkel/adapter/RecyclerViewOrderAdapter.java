@@ -19,6 +19,7 @@ import com.andorid.go_bengkel.model.BengkelModel;
 import com.andorid.go_bengkel.model.DetailBengkelModel;
 import com.andorid.go_bengkel.view.activity.DetailBengkelActivity;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class RecyclerViewOrderAdapter extends RecyclerView.Adapter<RecyclerViewOrderAdapter.ViewHolder> {
@@ -40,6 +41,7 @@ public class RecyclerViewOrderAdapter extends RecyclerView.Adapter<RecyclerViewO
         DetailBengkelModel model = list.get(position);
 
         holder.textViewNamaBengkel.setText(model.getNamaBengkel());
+        holder.textViewJarakLokasi.setText(new DecimalFormat("##.##").format(model.getJarak()) + " km");
         holder.textViewAlamatBengkel.setText(model.getAlamat());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +57,7 @@ public class RecyclerViewOrderAdapter extends RecyclerView.Adapter<RecyclerViewO
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list == null ? 0 : list.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -65,6 +67,7 @@ public class RecyclerViewOrderAdapter extends RecyclerView.Adapter<RecyclerViewO
             super(itemView);
             textViewNamaBengkel = itemView.findViewById(R.id.textViewNamaBengkel);
             textViewAlamatBengkel = itemView.findViewById(R.id.textViewAlamatBengkel);
+            textViewJarakLokasi = itemView.findViewById(R.id.textViewJarak);
         }
     }
 }

@@ -1,34 +1,78 @@
 package com.andorid.go_bengkel.view.activity;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.location.LocationManagerCompat;
 
 import com.andorid.go_bengkel.R;
 import com.andorid.go_bengkel.model.UserAppModel;
 import com.andorid.go_bengkel.preference.AppPreference;
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        int loadingTime = 3000;
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                UserAppModel model = AppPreference.getUser(SplashActivity.this);
-                if (model == null) {
-                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-                    finish();
-                } else {
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                    finish();
+        UserAppModel model = AppPreference.getUser(SplashActivity.this);
+        if (isLocationEnabled(this)){
+            int loadingTime = 3000;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (model == null) {
+                        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                        finish();
+                    } else {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        finish();
+                    }
                 }
+            }, loadingTime);
+        }else{
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Lokasi GPS tampaknya masih dimatikan, untuk menggunakan aplikasi ini harap menyalakannya.")
+                    .setCancelable(false)
+                    .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        public void onClick(final DialogInterface dialog, final int id) {
+                            startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 123);
+                        }
+                    })
+                    .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        public void onClick(final DialogInterface dialog, final int id) {
+                            dialog.cancel();
+                            finish();
+                        }
+                    });
+            final AlertDialog alert = builder.create();
+            alert.show();
+        }
+    }
+
+    private boolean isLocationEnabled(Context context) {
+        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        return LocationManagerCompat.isLocationEnabled(locationManager);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 123: {
+                finish();
+                startActivity(getIntent());
+                break;
             }
-        }, loadingTime);
+        }
     }
 }
