@@ -97,17 +97,19 @@ public class RecyclerViewHistoryAdapter extends RecyclerView.Adapter<RecyclerVie
                 holder.buttonSelesaikanTransaksi.setVisibility(View.VISIBLE);
             }
 
-            databaseReference.child("Bengkel").addValueEventListener(new ValueEventListener() {
+            databaseReference.child("Pelanggan").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                        if (userKey.equals(noteDataSnapshot.getKey())) {
-                            holder.textViewNamaBengkel.setText(noteDataSnapshot.child("namaBengkel").getValue(String.class));
+                        if (noteDataSnapshot.getKey().equals(model.getPelangganId())) {
+                            holder.textViewNamaBengkel.setText(noteDataSnapshot.child("nama").getValue(String.class));
                         }
                     }
+
                 }
+
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                public void onCancelled(@NonNull DatabaseError error) {
 
                 }
             });
@@ -143,7 +145,7 @@ public class RecyclerViewHistoryAdapter extends RecyclerView.Adapter<RecyclerVie
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(v.getContext(), "Transaksi telah berhasil diselesaikan", Toast.LENGTH_SHORT).show();
-                                databaseReference.child("Transaksi").child(model.getPelangganId()).child("status").setValue("Selesai");
+                                databaseReference.child("Transaksi").child(model.getBengkelId()).child("status").setValue("Selesai");
                             }
                         })
                         .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {

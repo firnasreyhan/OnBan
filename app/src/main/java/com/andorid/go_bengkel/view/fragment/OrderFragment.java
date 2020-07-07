@@ -1,6 +1,7 @@
 package com.andorid.go_bengkel.view.fragment;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -50,6 +51,7 @@ public class OrderFragment extends Fragment {
 
     private LinearLayout linearLayoutBengkelKosong, linearLayoutOrderKosong;
     private RecyclerView recyclerViewOrder;
+    private ProgressDialog progressDialog;
 
     private UserAppModel userAppModel;
 
@@ -67,6 +69,7 @@ public class OrderFragment extends Fragment {
         recyclerViewOrder = view.findViewById(R.id.recyclerViewOrder);
         linearLayoutBengkelKosong = view.findViewById(R.id.linearLayoutBengkelKosong);
         linearLayoutOrderKosong = view.findViewById(R.id.linearLayoutOrderKosong);
+        progressDialog = new ProgressDialog(getContext());
 
         if (ContextCompat.checkSelfPermission(
                 getContext(),
@@ -79,10 +82,15 @@ public class OrderFragment extends Fragment {
             getLocation();
         }
 
+        recyclerViewOrder.setVisibility(View.GONE);
+        progressDialog.setMessage("Tunggu Sebentar...");
+        progressDialog.show();
         if (userAppModel.getStatus().equalsIgnoreCase("pelanggan")) {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    recyclerViewOrder.setVisibility(View.VISIBLE);
+                    progressDialog.dismiss();
                     databaseReference.child("Bengkel").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -123,6 +131,8 @@ public class OrderFragment extends Fragment {
                 }
             }, 3000);
         } else {
+            recyclerViewOrder.setVisibility(View.VISIBLE);
+            progressDialog.dismiss();
             databaseReference.child("Transaksi").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
