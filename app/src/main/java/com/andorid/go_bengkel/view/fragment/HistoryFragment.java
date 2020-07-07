@@ -99,7 +99,7 @@ public class HistoryFragment extends Fragment {
     public void setRecyclerViewHistory(ArrayList<TransaksiModel> list) {
         if (list.size() > 0) {
             recyclerViewHistory.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerViewHistory.setAdapter(new RecyclerViewHistoryAdapter(list, userAppModel.getStatus()));
+            recyclerViewHistory.setAdapter(new RecyclerViewHistoryAdapter(list, userAppModel.getStatus(), userAppModel.getUserKey()));
             linearLayoutRiwayatKosong.setVisibility(View.GONE);
             recyclerViewHistory.setVisibility(View.VISIBLE);
         } else {

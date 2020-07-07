@@ -36,13 +36,14 @@ public class RecyclerViewHistoryAdapter extends RecyclerView.Adapter<RecyclerVie
 
     private ArrayList<TransaksiModel> list;
 
-    private String status;
+    private String status, userKey;
 
-    public RecyclerViewHistoryAdapter(ArrayList<TransaksiModel> list, String status) {
+    public RecyclerViewHistoryAdapter(ArrayList<TransaksiModel> list, String status, String userKey) {
         this.list = list;
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("OnBan");
         this.status = status;
+        this.userKey = userKey;
     }
 
     @NonNull
@@ -95,6 +96,21 @@ public class RecyclerViewHistoryAdapter extends RecyclerView.Adapter<RecyclerVie
             if (model.getStatus().equalsIgnoreCase("Sedang Diproses")) {
                 holder.buttonSelesaikanTransaksi.setVisibility(View.VISIBLE);
             }
+
+            databaseReference.child("Bengkel").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                        if (userKey.equals(noteDataSnapshot.getKey())) {
+                            holder.textViewNamaBengkel.setText(noteDataSnapshot.child("namaBengkel").getValue(String.class));
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
 
         holder.textViewStatusTransaksi.setText(model.getStatus());
