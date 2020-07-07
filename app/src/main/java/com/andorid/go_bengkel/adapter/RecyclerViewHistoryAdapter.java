@@ -71,7 +71,6 @@ public class RecyclerViewHistoryAdapter extends RecyclerView.Adapter<RecyclerVie
 
                 }
             });
-            holder.textViewStatusTransaksi.setText(model.getStatus());
 
             databaseReference.child("Review").addValueEventListener(new ValueEventListener() {
                 @Override
@@ -97,6 +96,8 @@ public class RecyclerViewHistoryAdapter extends RecyclerView.Adapter<RecyclerVie
                 holder.buttonSelesaikanTransaksi.setVisibility(View.VISIBLE);
             }
         }
+
+        holder.textViewStatusTransaksi.setText(model.getStatus());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
