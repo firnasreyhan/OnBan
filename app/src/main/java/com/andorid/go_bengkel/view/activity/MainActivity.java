@@ -16,7 +16,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -344,8 +343,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         PendingIntent pendingIntent;
         NotificationManager notifManager = (NotificationManager) getSystemService(this.NOTIFICATION_SERVICE);
 
-        String id = "ID_KOMPI";
-        String title = "Kompikaleng";
+        String id = "ID_ORDER";
+        String title = "On-ban New Order";
         NotificationCompat.Builder builder;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -354,7 +353,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (mChannel == null) {
                 mChannel = new NotificationChannel(id, title, importance);
                 mChannel.enableVibration(true);
-                mChannel.setVibrationPattern(new long[]{1000, 200, 1000});
+                mChannel.setVibrationPattern(new long[]{1000, 300, 1000});
                 notifManager.createNotificationChannel(mChannel);
             }
         }
@@ -363,7 +362,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
         builder.setContentTitle("On-ban New Order")
-                .setSmallIcon(android.R.drawable.ic_popup_reminder)
+                .setSmallIcon(R.drawable.ic_notif)
                 .setContentText("Ada Pesanan Baru!")
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setAutoCancel(true)
