@@ -40,22 +40,23 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }, loadingTime);
         }else{
-            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Lokasi GPS tampaknya masih dimatikan, untuk menggunakan aplikasi ini harap menyalakannya.")
+            new android.app.AlertDialog.Builder(SplashActivity.this)
+                    .setMessage("Lokasi GPS tampaknya masih dimatikan, untuk menggunakan aplikasi ini harap menyalakannya.")
                     .setCancelable(false)
                     .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                        public void onClick(final DialogInterface dialog, final int id) {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
                             startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 123);
                         }
                     })
                     .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                        public void onClick(final DialogInterface dialog, final int id) {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
                             finish();
                         }
-                    });
-            final AlertDialog alert = builder.create();
-            alert.show();
+                    })
+                    .show();
         }
     }
 

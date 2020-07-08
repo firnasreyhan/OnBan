@@ -21,9 +21,10 @@
         <activity android:name=".view.activity.EditPelangganActivity" />
         <activity android:name=".view.activity.RegisterBengkelActivity" />
         <activity android:name=".view.activity.RegisterPelangganActivity" />
-        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".view.activity.SplashActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

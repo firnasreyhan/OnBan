@@ -49,7 +49,7 @@ public class OrderFragment extends Fragment {
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
 
-    private LinearLayout linearLayoutBengkelKosong, linearLayoutOrderKosong;
+    private LinearLayout linearLayoutBengkelKosong, linearLayoutOrderKosong, llTarif;
     private RecyclerView recyclerViewOrder;
     private ProgressDialog progressDialog;
 
@@ -69,6 +69,7 @@ public class OrderFragment extends Fragment {
         recyclerViewOrder = view.findViewById(R.id.recyclerViewOrder);
         linearLayoutBengkelKosong = view.findViewById(R.id.linearLayoutBengkelKosong);
         linearLayoutOrderKosong = view.findViewById(R.id.linearLayoutOrderKosong);
+        llTarif = view.findViewById(R.id.llTarif);
         progressDialog = new ProgressDialog(getContext());
 
         if (ContextCompat.checkSelfPermission(
@@ -89,6 +90,7 @@ public class OrderFragment extends Fragment {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    llTarif.setVisibility(View.VISIBLE);
                     recyclerViewOrder.setVisibility(View.VISIBLE);
                     progressDialog.dismiss();
                     databaseReference.child("Bengkel").addValueEventListener(new ValueEventListener() {
@@ -129,10 +131,11 @@ public class OrderFragment extends Fragment {
                         }
                     });
                 }
-            }, 3000);
+            }, 5000);
         } else {
             recyclerViewOrder.setVisibility(View.VISIBLE);
             progressDialog.dismiss();
+            llTarif.setVisibility(View.GONE);
             databaseReference.child("Transaksi").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

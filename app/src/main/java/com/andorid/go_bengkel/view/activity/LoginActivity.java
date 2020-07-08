@@ -1,10 +1,13 @@
 package com.andorid.go_bengkel.view.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.andorid.go_bengkel.R;
 import com.andorid.go_bengkel.model.UserAppModel;
@@ -23,13 +27,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
     private ProgressDialog progressDialog;
 
     private TextInputEditText editTextEmail, editTextPassword;
-    private TextView textViewRegisterPelanggan, textViewRegisterBengkel;
+    private TextView textViewRegisterPelanggan, textViewRegisterBengkel, textViewLupaPassword;
     private Button buttonMasuk;
 
     private boolean checkAccount;
@@ -47,6 +51,7 @@ public class LoginActivity extends Activity {
         editTextPassword = findViewById(R.id.textInputEditTextPassword);
         textViewRegisterPelanggan = findViewById(R.id.textViewRegisterPelanggan);
         textViewRegisterBengkel = findViewById(R.id.textViewRegisterBengkel);
+        textViewLupaPassword = findViewById(R.id.textViewLupaPassword);
         buttonMasuk = findViewById(R.id.buttonMasuk);
 
         textViewRegisterPelanggan.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +68,21 @@ public class LoginActivity extends Activity {
             }
         });
 
+        textViewLupaPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(LoginActivity.this)
+                        .setMessage("Harap menghubungi Admin, melalui \n email : etervibes@gmail.com \n whatsapp : +6289637136936")
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
+            }
+        });
         buttonMasuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
