@@ -63,6 +63,7 @@ public class RecyclerViewOrderBengkelAdapter extends RecyclerView.Adapter<Recycl
             }
         });
         holder.textViewAlamat.setText(model.getAlamat());
+        holder.textViewRincian.setText(model.getRincian());
 
         holder.buttonTerima.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,13 +119,14 @@ public class RecyclerViewOrderBengkelAdapter extends RecyclerView.Adapter<Recycl
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView textViewNamaPelanggan, textViewAlamat;
+        private TextView textViewNamaPelanggan, textViewAlamat, textViewRincian;
         private Button buttonTerima, buttonTolak;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewNamaPelanggan = itemView.findViewById(R.id.textViewNamaPelanggan);
             textViewAlamat = itemView.findViewById(R.id.textViewAlamat);
+            textViewRincian = itemView.findViewById(R.id.textViewRincian);
             buttonTerima = itemView.findViewById(R.id.buttonTerima);
             buttonTolak = itemView.findViewById(R.id.buttonTolak);
         }

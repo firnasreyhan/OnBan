@@ -1,19 +1,26 @@
 package com.andorid.go_bengkel.view.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import com.andorid.go_bengkel.R;
-import com.andorid.go_bengkel.model.BengkelModel;
 import com.andorid.go_bengkel.view.fragment.HistoryFragment;
 import com.andorid.go_bengkel.view.fragment.OrderFragment;
 import com.andorid.go_bengkel.view.fragment.ProfileFragment;
@@ -46,12 +53,13 @@ import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener {
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
+
+    private static final String CHANNEL_ID = "ID_Onban";
 
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
@@ -64,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private PermissionsManager permissionsManager;
     private LocationEngine locationEngine;
     private LocationChangeListeningActivityLocationCallback callback = new LocationChangeListeningActivityLocationCallback(this);
+
+    int notifNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,6 +184,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     }
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -184,7 +195,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mapboxMap.setStyle(Style.MAPBOX_STREETS,
                 new Style.OnStyleLoaded() {
-                    @Override public void onStyleLoaded(@NonNull Style style) {
+                    @Override
+                    public void onStyleLoaded(@NonNull Style style) {
                         enableLocationComponent(style);
                     }
                 });
@@ -193,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     /**
      * Initialize the Maps SDK's LocationComponent
      */
-    @SuppressWarnings( {"MissingPermission"})
+    @SuppressWarnings({"MissingPermission"})
     private void enableLocationComponent(@NonNull Style loadedMapStyle) {
         // Check if permissions are enabled and if not request
         if (PermissionsManager.areLocationPermissionsGranted(this)) {
@@ -311,5 +323,104 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "OnbanOrder";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    void showNotif(){
+        Intent intent;
+        PendingIntent pendingIntent;
+        NotificationManager notifManager = (NotificationManager) getSystemService(this.NOTIFICATION_SERVICE);
+
+        String id = "ID_KOMPI";
+        String title = "Kompikaleng";
+        NotificationCompat.Builder builder;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = notifManager.getNotificationChannel(id);
+            if (mChannel == null) {
+                mChannel = new NotificationChannel(id, title, importance);
+                mChannel.enableVibration(true);
+                mChannel.setVibrationPattern(new long[]{1000, 200, 1000});
+                notifManager.createNotificationChannel(mChannel);
+            }
+        }
+        builder = new NotificationCompat.Builder(this, id);
+        intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
+        builder.setContentTitle("On-ban New Order")
+                .setSmallIcon(android.R.drawable.ic_popup_reminder)
+                .setContentText("Ada Pesanan Baru!")
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
+                .setVibrate(new long[]{1000, 300, 1000})
+                .setPriority(Notification.PRIORITY_HIGH);
+        Notification notification = builder.build();
+        notification.number = notifNumber;
+        Log.d("masuk", String.valueOf(notifNumber)+"start");
+
+        databaseReference.child("Transaksi").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.d("masuk", "masuktransaksi");
+                for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                    if (noteDataSnapshot.child("status").getValue(String.class).equalsIgnoreCase("Menunggu Konfirmasi")) {
+                        notifManager.notify(0, notification);
+                        notifNumber+=1;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("masuk", String.valueOf(notifNumber)+"resume");
+        if (notifNumber < 1) {
+            showNotif();
+        }
+        Log.d("masuk", "masukpause");
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("masuk", String.valueOf(notifNumber)+"pause");
+        if (notifNumber < 1) {
+            showNotif();
+        }
+        Log.d("masuk", "masukpause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("masuk", String.valueOf(notifNumber)+"stop");
+        if (notifNumber < 1) {
+            showNotif();
+        }
+        Log.d("masuk", "masukstop");
     }
 }
