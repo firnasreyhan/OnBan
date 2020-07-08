@@ -32,31 +32,31 @@
                 android:id="@+id/textViewNamaBengkel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nama Bengkel"
                 android:layout_marginBottom="3dp"
                 android:fontFamily="@font/montserrat_bold"
+                android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewJarak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jarak"
                 android:layout_marginBottom="3dp"
                 android:fontFamily="@font/montserrat_semibold"
+                android:text="0 Km"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewAlamatBengkel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Alamat"
                 android:fontFamily="@font/montserrat_light"
+                android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:visibility="gone"

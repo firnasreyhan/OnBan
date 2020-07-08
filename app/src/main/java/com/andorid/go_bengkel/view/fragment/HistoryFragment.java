@@ -95,7 +95,6 @@ public class HistoryFragment extends Fragment {
         return view;
     }
 
-
     public void setRecyclerViewHistory(ArrayList<TransaksiModel> list) {
         if (list.size() > 0) {
             recyclerViewHistory.setLayoutManager(new LinearLayoutManager(getContext()));

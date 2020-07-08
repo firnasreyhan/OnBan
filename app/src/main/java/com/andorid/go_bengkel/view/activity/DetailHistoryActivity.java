@@ -126,10 +126,8 @@ public class DetailHistoryActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                        if (noteDataSnapshot.getKey().equals(transaksiModel.getPelangganId())) {
-                            if (noteDataSnapshot.getKey().equals(userAppModel.getUserKey())) {
-                                textViewNamaPelanggan.setText(noteDataSnapshot.child("nama").getValue(String.class));
-                            }
+                        if (noteDataSnapshot.getKey().equals(userAppModel.getUserKey())) {
+                            textViewNamaPelanggan.setText(noteDataSnapshot.child("nama").getValue(String.class));
                         }
                     }
                 }
