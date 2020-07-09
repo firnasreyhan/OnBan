@@ -112,7 +112,7 @@ public class OrderActivity extends AppCompatActivity {
             public void onClick(View v) {
                 new AlertDialog.Builder(OrderActivity.this)
                         .setTitle("Informasi")
-                        .setMessage("Transaksi sedang diproses, mohon tunggu montir untuk sampai ke lokasi anda")
+                        .setMessage("Transaksi sedang menunggu konfirmasi... \n Harap memantau pesanan pada halaman Riwayat dan tunggu montir untuk sampai ke lokasi Anda.")
                         .setCancelable(false)
                         .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                             @Override
