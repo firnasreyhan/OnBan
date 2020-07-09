@@ -48,7 +48,6 @@ public class RecyclerViewOrderAdapter extends RecyclerView.Adapter<RecyclerViewO
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DetailBengkelActivity.class);
-                Log.e("asd", model.getUserKey());
                 intent.putExtra("bengkel", model);
                 v.getContext().startActivity(intent);
             }

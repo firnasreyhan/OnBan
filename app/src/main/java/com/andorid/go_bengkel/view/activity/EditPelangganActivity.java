@@ -33,7 +33,6 @@ public class EditPelangganActivity extends AppCompatActivity {
     private TextInputEditText textInputEditTextKonfirmasiPassword;
 
     private UserAppModel model;
-    private String latitude, longitude;
     private boolean checkEmail;
 
     @Override

@@ -77,8 +77,6 @@ public class DetailBengkelActivity extends AppCompatActivity {
         buttonPesanLayanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //addTransaction(userAppModel.getUserKey(), detailBengkelModel.getUserKey());
-                //startActivity(new Intent(DetailBengkelActivity.this, OrderActivity.class));
                 Intent intent = new Intent(DetailBengkelActivity.this, OrderActivity.class);
                 intent.putExtra("bengkelId", detailBengkelModel.getUserKey());
                 startActivity(intent);

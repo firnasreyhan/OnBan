@@ -139,7 +139,6 @@ public class OrderActivity extends AppCompatActivity {
                                         editTextRincian.getText().toString(),
                                         textViewTanggal.getText().toString()
                                 );
-                                //UpdateToken();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
@@ -236,12 +235,6 @@ public class OrderActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void UpdateToken(){
-        String refreshToken= FirebaseInstanceId.getInstance().getToken();
-        Token token= new Token(refreshToken);
-        FirebaseDatabase.getInstance().getReference("OnBan").child("Token").child(userAppModel.getUserKey()).setValue(token);
     }
 
     public void sendNotifications(String usertoken, String title, String message) {

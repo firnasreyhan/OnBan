@@ -116,16 +116,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             mapFragment.getMapAsync(this);
         }
 
-//        Location loc1 = new Location("");
-//        loc1.setLatitude(-7.965863333333334);
-//        loc1.setLongitude(112.60745999999999);
-//
-//        Location loc2 = new Location("");
-//        loc2.setLatitude(-7.9571499999999995);
-//        loc2.setLongitude(112.61797166666665);
-//
-//        float distanceInMeters = loc1.distanceTo(loc2);
-//        Log.e("calculate", String.valueOf(distanceInMeters));
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -138,25 +128,21 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     setTitle("Beranda");
                     fragmentManager.beginTransaction().hide(fragmentActive).show(mapFragment).commit();
                     fragmentActive = mapFragment;
-//                    doubleBackToExit = true;
                     return true;
                 case R.id.order_menu:
                     setTitle("Pesan");
                     fragmentManager.beginTransaction().hide(fragmentActive).show(fragmentOrder).commit();
                     fragmentActive = fragmentOrder;
-//                    doubleBackToExit = false;
                     return true;
                 case R.id.history_menu:
                     setTitle("Riwayat");
                     fragmentManager.beginTransaction().hide(fragmentActive).show(fragmentHistory).commit();
                     fragmentActive = fragmentHistory;
-//                    doubleBackToExit = false;
                     return true;
                 case R.id.profile_menu:
                     setTitle("Profil");
                     fragmentManager.beginTransaction().hide(fragmentActive).show(fragmentProfile).commit();
                     fragmentActive = fragmentProfile;
-//                    doubleBackToExit = false;
                     return true;
             }
             return false;

@@ -110,7 +110,6 @@ public class EditBengkelActivity extends AppCompatActivity {
                                         dialog.dismiss();
                                         break;
                                     case 1:
-                                        //startActivity(new Intent(RegisterBengkelActivity.this, LocationPickerActivity.class));
                                         Intent i = new Intent(EditBengkelActivity.this, LocationPickerActivity.class);
                                         startActivityForResult(i, 99);
                                         dialog.dismiss();

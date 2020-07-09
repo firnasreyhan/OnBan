@@ -168,50 +168,6 @@ public class LocationPickerActivity extends Activity implements PermissionsListe
                                     }
                                 })
                                 .show();
-//                        if (hoveringMarker.getVisibility() == View.VISIBLE) {
-//
-//                            // Use the map target's coordinates to make a reverse geocoding search
-//                            final LatLng mapTargetLatLng = mapboxMap.getCameraPosition().target;
-//
-//                            // Hide the hovering red hovering ImageView marker
-//                            hoveringMarker.setVisibility(View.INVISIBLE);
-//
-//                            // Transform the appearance of the button to become the cancel button
-//                            selectLocationButton.setBackgroundColor(
-//                                    ContextCompat.getColor(LocationPickerActivity.this, R.color.colorAccent));
-//                            selectLocationButton.setText(getString(R.string.location_picker_select_location_button_cancel));
-//
-//                            // Show the SymbolLayer icon to represent the selected map location
-//                            if (style.getLayer(DROPPED_MARKER_LAYER_ID) != null) {
-//                                GeoJsonSource source = style.getSourceAs("dropped-marker-source-id");
-//                                if (source != null) {
-//                                    source.setGeoJson(Point.fromLngLat(mapTargetLatLng.getLongitude(), mapTargetLatLng.getLatitude()));
-//                                }
-//                                droppedMarkerLayer = style.getLayer(DROPPED_MARKER_LAYER_ID);
-//                                if (droppedMarkerLayer != null) {
-//                                    droppedMarkerLayer.setProperties(visibility(VISIBLE));
-//                                }
-//                            }
-//
-//                            // Use the map camera target's coordinates to make a reverse geocoding search
-//                            reverseGeocode(Point.fromLngLat(mapTargetLatLng.getLongitude(), mapTargetLatLng.getLatitude()));
-//
-//                        } else {
-//
-//                            // Switch the button appearance back to select a location.
-//                            selectLocationButton.setBackgroundColor(
-//                                    ContextCompat.getColor(LocationPickerActivity.this, R.color.colorPrimary));
-//                            selectLocationButton.setText(getString(R.string.location_picker_select_location_button_select));
-//
-//                            // Show the red hovering ImageView marker
-//                            hoveringMarker.setVisibility(View.VISIBLE);
-//
-//                            // Hide the selected location SymbolLayer
-//                            droppedMarkerLayer = style.getLayer(DROPPED_MARKER_LAYER_ID);
-//                            if (droppedMarkerLayer != null) {
-//                                droppedMarkerLayer.setProperties(visibility(NONE));
-//                            }
-//                        }
                     }
                 });
             }
