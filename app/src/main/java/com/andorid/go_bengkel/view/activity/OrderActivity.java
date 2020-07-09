@@ -83,7 +83,7 @@ public class OrderActivity extends AppCompatActivity {
         bengkelId = getIntent().getStringExtra("bengkelId");
         progressDialog = new ProgressDialog(this);
         calendar = Calendar.getInstance();
-        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("OnBan");
         transactionId = databaseReference.push().getKey();
@@ -121,7 +121,7 @@ public class OrderActivity extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         String usertoken = dataSnapshot.getValue(String.class);
-                                        sendNotifications(usertoken, "Ada pesanan dari pelanggan", "Silahkan cek aplikasi anda");
+                                        sendNotifications(usertoken, "Ada pesanan baru dari pelanggan!", "Silahkan cek aplikasi Anda.");
                                     }
 
                                     @Override
