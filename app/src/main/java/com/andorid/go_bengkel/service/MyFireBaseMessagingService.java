@@ -54,6 +54,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
                     .setContentText(message)
                     .setAutoCancel(true)
                     .setSound(notificationSoundUri)
+                    .setVibrate(new long[]{1000, 300, 1000})
                     .setContentIntent(pendingIntent);
 
             //Set notification color to match your app color template

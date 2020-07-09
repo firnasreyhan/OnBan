@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
 
-    private static final String CHANNEL_ID = "ID_Onban";
-
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
     private BottomNavigationView bottomNavigationView;
@@ -72,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private LocationEngine locationEngine;
     private LocationChangeListeningActivityLocationCallback callback = new LocationChangeListeningActivityLocationCallback(this);
 
-    int notifNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -324,102 +321,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "OnbanOrder";
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
 
-//    void showNotif(){
-//        Intent intent;
-//        PendingIntent pendingIntent;
-//        NotificationManager notifManager = (NotificationManager) getSystemService(this.NOTIFICATION_SERVICE);
-//
-//        String id = "ID_ORDER";
-//        String title = "On-ban New Order";
-//        NotificationCompat.Builder builder;
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            int importance = NotificationManager.IMPORTANCE_HIGH;
-//            NotificationChannel mChannel = notifManager.getNotificationChannel(id);
-//            if (mChannel == null) {
-//                mChannel = new NotificationChannel(id, title, importance);
-//                mChannel.enableVibration(true);
-//                mChannel.setVibrationPattern(new long[]{1000, 300, 1000});
-//                notifManager.createNotificationChannel(mChannel);
-//            }
-//        }
-//        builder = new NotificationCompat.Builder(this, id);
-//        intent = new Intent(getApplicationContext(), MainActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//        pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
-//        builder.setContentTitle("On-ban New Order")
-//                .setSmallIcon(R.drawable.ic_notif)
-//                .setContentText("Ada Pesanan Baru!")
-//                .setDefaults(Notification.DEFAULT_ALL)
-//                .setAutoCancel(true)
-//                .setContentIntent(pendingIntent)
-//                .setVibrate(new long[]{1000, 300, 1000})
-//                .setPriority(Notification.PRIORITY_HIGH);
-//        Notification notification = builder.build();
-//        notification.number = notifNumber;
-//        Log.d("masuk", String.valueOf(notifNumber)+"start");
-//
-//        databaseReference.child("Transaksi").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Log.d("masuk", "masuktransaksi");
-//                for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-//                    if (noteDataSnapshot.child("status").getValue(String.class).equalsIgnoreCase("Menunggu Konfirmasi")) {
-//                        notifManager.notify(0, notification);
-//                        notifNumber+=1;
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("masuk", String.valueOf(notifNumber)+"resume");
-//        if (notifNumber < 1) {
-//            showNotif();
-//        }
-        Log.d("masuk", "masukpause");
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("masuk", String.valueOf(notifNumber)+"pause");
-//        if (notifNumber < 1) {
-//            showNotif();
-//        }
-        Log.d("masuk", "masukpause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("masuk", String.valueOf(notifNumber)+"stop");
-//        if (notifNumber < 1) {
-//            showNotif();
-//        }
-        Log.d("masuk", "masukstop");
-    }
 }
