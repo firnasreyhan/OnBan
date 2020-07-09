@@ -141,7 +141,8 @@ public class OrderFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     ArrayList<TransaksiModel> list = new ArrayList<>();
                     for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                        if (noteDataSnapshot.child("status").getValue(String.class).equalsIgnoreCase("Menunggu Konfirmasi")) {
+                        if (noteDataSnapshot.child("status").getValue(String.class).equalsIgnoreCase("Menunggu Konfirmasi")
+                                && noteDataSnapshot.child("bengkelId").getValue(String.class).equalsIgnoreCase(userAppModel.getUserKey())) {
                             TransaksiModel model = new TransaksiModel(
                                     noteDataSnapshot.child("pelangganId").getValue(String.class),
                                     noteDataSnapshot.getKey(),
