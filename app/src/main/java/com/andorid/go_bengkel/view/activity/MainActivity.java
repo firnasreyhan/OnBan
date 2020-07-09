@@ -338,67 +338,67 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    void showNotif(){
-        Intent intent;
-        PendingIntent pendingIntent;
-        NotificationManager notifManager = (NotificationManager) getSystemService(this.NOTIFICATION_SERVICE);
-
-        String id = "ID_ORDER";
-        String title = "On-ban New Order";
-        NotificationCompat.Builder builder;
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel mChannel = notifManager.getNotificationChannel(id);
-            if (mChannel == null) {
-                mChannel = new NotificationChannel(id, title, importance);
-                mChannel.enableVibration(true);
-                mChannel.setVibrationPattern(new long[]{1000, 300, 1000});
-                notifManager.createNotificationChannel(mChannel);
-            }
-        }
-        builder = new NotificationCompat.Builder(this, id);
-        intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
-        builder.setContentTitle("On-ban New Order")
-                .setSmallIcon(R.drawable.ic_notif)
-                .setContentText("Ada Pesanan Baru!")
-                .setDefaults(Notification.DEFAULT_ALL)
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntent)
-                .setVibrate(new long[]{1000, 300, 1000})
-                .setPriority(Notification.PRIORITY_HIGH);
-        Notification notification = builder.build();
-        notification.number = notifNumber;
-        Log.d("masuk", String.valueOf(notifNumber)+"start");
-
-        databaseReference.child("Transaksi").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.d("masuk", "masuktransaksi");
-                for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                    if (noteDataSnapshot.child("status").getValue(String.class).equalsIgnoreCase("Menunggu Konfirmasi")) {
-                        notifManager.notify(0, notification);
-                        notifNumber+=1;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
+//    void showNotif(){
+//        Intent intent;
+//        PendingIntent pendingIntent;
+//        NotificationManager notifManager = (NotificationManager) getSystemService(this.NOTIFICATION_SERVICE);
+//
+//        String id = "ID_ORDER";
+//        String title = "On-ban New Order";
+//        NotificationCompat.Builder builder;
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            int importance = NotificationManager.IMPORTANCE_HIGH;
+//            NotificationChannel mChannel = notifManager.getNotificationChannel(id);
+//            if (mChannel == null) {
+//                mChannel = new NotificationChannel(id, title, importance);
+//                mChannel.enableVibration(true);
+//                mChannel.setVibrationPattern(new long[]{1000, 300, 1000});
+//                notifManager.createNotificationChannel(mChannel);
+//            }
+//        }
+//        builder = new NotificationCompat.Builder(this, id);
+//        intent = new Intent(getApplicationContext(), MainActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//        pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
+//        builder.setContentTitle("On-ban New Order")
+//                .setSmallIcon(R.drawable.ic_notif)
+//                .setContentText("Ada Pesanan Baru!")
+//                .setDefaults(Notification.DEFAULT_ALL)
+//                .setAutoCancel(true)
+//                .setContentIntent(pendingIntent)
+//                .setVibrate(new long[]{1000, 300, 1000})
+//                .setPriority(Notification.PRIORITY_HIGH);
+//        Notification notification = builder.build();
+//        notification.number = notifNumber;
+//        Log.d("masuk", String.valueOf(notifNumber)+"start");
+//
+//        databaseReference.child("Transaksi").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                Log.d("masuk", "masuktransaksi");
+//                for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+//                    if (noteDataSnapshot.child("status").getValue(String.class).equalsIgnoreCase("Menunggu Konfirmasi")) {
+//                        notifManager.notify(0, notification);
+//                        notifNumber+=1;
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.d("masuk", String.valueOf(notifNumber)+"resume");
-        if (notifNumber < 1) {
-            showNotif();
-        }
+//        if (notifNumber < 1) {
+//            showNotif();
+//        }
         Log.d("masuk", "masukpause");
 
     }
@@ -407,9 +407,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onPause() {
         super.onPause();
         Log.d("masuk", String.valueOf(notifNumber)+"pause");
-        if (notifNumber < 1) {
-            showNotif();
-        }
+//        if (notifNumber < 1) {
+//            showNotif();
+//        }
         Log.d("masuk", "masukpause");
     }
 
@@ -417,9 +417,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onStop() {
         super.onStop();
         Log.d("masuk", String.valueOf(notifNumber)+"stop");
-        if (notifNumber < 1) {
-            showNotif();
-        }
+//        if (notifNumber < 1) {
+//            showNotif();
+//        }
         Log.d("masuk", "masukstop");
     }
 }

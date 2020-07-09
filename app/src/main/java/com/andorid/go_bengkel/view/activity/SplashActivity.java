@@ -16,6 +16,9 @@ import androidx.core.location.LocationManagerCompat;
 import com.andorid.go_bengkel.R;
 import com.andorid.go_bengkel.model.UserAppModel;
 import com.andorid.go_bengkel.preference.AppPreference;
+import com.andorid.go_bengkel.service.Token;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class SplashActivity extends AppCompatActivity {
 

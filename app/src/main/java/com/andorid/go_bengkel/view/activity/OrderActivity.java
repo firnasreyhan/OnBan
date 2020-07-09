@@ -27,12 +27,22 @@ import com.andorid.go_bengkel.model.ReviewModel;
 import com.andorid.go_bengkel.model.TransaksiModel;
 import com.andorid.go_bengkel.model.UserAppModel;
 import com.andorid.go_bengkel.preference.AppPreference;
+import com.andorid.go_bengkel.service.APIService;
+import com.andorid.go_bengkel.service.Client;
+import com.andorid.go_bengkel.service.Data;
+import com.andorid.go_bengkel.service.MyResponse;
+import com.andorid.go_bengkel.service.NotificationSender;
+import com.andorid.go_bengkel.service.Token;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -40,9 +50,14 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class OrderActivity extends AppCompatActivity {
     private final int REQUEST_CODE_LOCATION_PERMISSION = 1;
 
+    private APIService apiService;
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
     private ProgressDialog progressDialog;
@@ -63,6 +78,7 @@ public class OrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order);
         setTitle("Pesan Layanan");
 
+        apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
         userAppModel = AppPreference.getUser(this);
         bengkelId = getIntent().getStringExtra("bengkelId");
         progressDialog = new ProgressDialog(this);
@@ -101,6 +117,19 @@ public class OrderActivity extends AppCompatActivity {
                         .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                FirebaseDatabase.getInstance().getReference().child("OnBan").child("Token").child(bengkelId).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        String usertoken = dataSnapshot.getValue(String.class);
+                                        sendNotifications(usertoken, "Ada pesanan dari pelanggan", "Silahkan cek aplikasi anda");
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
                                 addTransaction(
                                         userAppModel.getUserKey(),
                                         bengkelId,
@@ -110,6 +139,7 @@ public class OrderActivity extends AppCompatActivity {
                                         editTextRincian.getText().toString(),
                                         textViewTanggal.getText().toString()
                                 );
+                                //UpdateToken();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
@@ -206,5 +236,31 @@ public class OrderActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void UpdateToken(){
+        String refreshToken= FirebaseInstanceId.getInstance().getToken();
+        Token token= new Token(refreshToken);
+        FirebaseDatabase.getInstance().getReference("OnBan").child("Token").child(userAppModel.getUserKey()).setValue(token);
+    }
+
+    public void sendNotifications(String usertoken, String title, String message) {
+        Data data = new Data(title, message);
+        NotificationSender sender = new NotificationSender(data, usertoken);
+        apiService.sendNotifcation(sender).enqueue(new Callback<MyResponse>() {
+            @Override
+            public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                if (response.code() == 200) {
+                    if (response.body().success != 1) {
+                        Toast.makeText(OrderActivity.this, "Failed ", Toast.LENGTH_LONG);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MyResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

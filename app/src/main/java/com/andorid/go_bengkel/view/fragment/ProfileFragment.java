@@ -93,6 +93,7 @@ public class ProfileFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
+                                FirebaseDatabase.getInstance().getReference("OnBan").child("Token").child(model.getUserKey()).removeValue();
                                 AppPreference.removeUser(getContext());
                                 Toast.makeText(getActivity(), "Anda berhasil keluar dari aplikasi", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getActivity(), LoginActivity.class));

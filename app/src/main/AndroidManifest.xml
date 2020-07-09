@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.andorid.go_bengkel">
+    package="com.andorid.go_bengkel" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -11,8 +11,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.ReviewActivity"></activity>
+        android:theme="@style/AppTheme" >
+        <service
+            android:name=".service.MyFireBaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".service.MyFirebaseIdService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <activity android:name=".view.activity.ReviewActivity" />
         <activity android:name=".view.activity.DetailHistoryActivity" />
         <activity android:name=".view.activity.OrderActivity" />
         <activity android:name=".view.activity.DetailBengkelActivity" />
@@ -21,10 +37,12 @@
         <activity android:name=".view.activity.EditPelangganActivity" />
         <activity android:name=".view.activity.RegisterBengkelActivity" />
         <activity android:name=".view.activity.RegisterPelangganActivity" />
-        <activity android:name=".view.activity.LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".view.activity.SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".view.activity.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".view.activity.SplashActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

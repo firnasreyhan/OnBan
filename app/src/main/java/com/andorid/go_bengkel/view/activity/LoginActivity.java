@@ -20,12 +20,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.andorid.go_bengkel.R;
 import com.andorid.go_bengkel.model.UserAppModel;
 import com.andorid.go_bengkel.preference.AppPreference;
+import com.andorid.go_bengkel.service.Token;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class LoginActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
@@ -109,6 +111,8 @@ public class LoginActivity extends AppCompatActivity {
                             if (checkAccount) {
                                 progressDialog.dismiss();
                                 checkAccount = false;
+                                String refreshToken= FirebaseInstanceId.getInstance().getToken();
+                                updateToken(refreshToken);
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 finishAffinity();
                             } else {
@@ -147,5 +151,11 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void updateToken(String refreshToken) {
+        String userKey = AppPreference.getUser(getApplicationContext()).getUserKey();
+        Token token = new Token(refreshToken);
+        FirebaseDatabase.getInstance().getReference("OnBan").child("Token").child(userKey).setValue(token);
     }
 }
